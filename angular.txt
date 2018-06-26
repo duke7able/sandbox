@@ -1,0 +1,105 @@
+good tut to quick boost start:-
+https://www.youtube.com/watch?v=zoCLEwFUpqg
+
+The ng-model directive binds the value of HTML controls (input, select, textarea) to application data. , i.e. it takes the input kind of thing.
+The ng-bind directive binds application data to the HTML view. kind gives an output kind of thing.
+data-ng-init="firstName='John'" can be used to initialize stff.
+AngularJS expressions are written inside double braces: {{ expression }}.
+the square brackets are the property binding, which is done in the template place i.e. in the html. By property we mean here an attribute which is basically a property of a an element in html. Ex: 'value' is an attribute of html element... say value attribute of an input tag.
+then in the controller of the angular , in the component if we are defining the template inline then there we can have this [value] box.
+() is used for the event binding in angular.
+we can make different components under folder components and we can use them directly by their selector as a tag.
+By that what i mean is if i have made a component user-data then in the main app.component , in the component part in the template i will just use tag <user-data></user-data>.
+the class below our @component declarator will contains all the meta data i guess, that is what all members will be used. methods for the same , contructor to initailize them.
+good practice is to declare member variable in the class just like we do in a standard java or c++ class. but just the syntax of declaring members are of typescript as in
+for say member 'name' of type string it should be declared as:-
+name : string;
+also we can have a members value as a json object i.e. say for example for member called address , we can have a {street : 'sdtgsry' , block : 'sdgdsg' , city : 'sdgg'}.
+for that what we can do is we can create an interface :-
+interface address{
+	street : string;
+	block : string;
+	city : string;
+	
+}
+now address is also a datatype atleast for this component and by that i mean for this class.
+we can also create arrays like :-
+
+hobbies : string[];
+and in some method or say in constructor we define it some elements, ["abc","qwe","zxc"]; we want to loop them:-
+<li *ngFor="let hobby of hobbies">
+	{{hobby}}
+</li>
+similarly we have *ngIf...etc
+we could directly bind the attribute i.e. say an input element's attribute to realtime thing
+in the template:-
+<input type="text" name="someName" [(ngModel)]="someName" />
+and now anywhere in that component we can have {{someName}} and it will be showing dynamically what the input value of the input whose name is someName.
+we can also give something like id to elements, which is not exactly id but similar to that, in the above one we can do is
+<input type="text" #hobby />
+and anywhere in that template where we are using some typescript , as we cant directly use it in html as we did earlier by using expression {{sdnfids}}, we can use it's value in typescript as hobby.value
+
+
+really a great resource for angular2:-
+https://scotch.io/tutorials/creating-your-first-angular-2-components
+
+also to create a new app or module we dont need to do manually stuff , we could use ng generate command to generate anything
+
+also another official resource for using angular cli
+
+to change properties of style in html we can do is,
+[style.color]="someVariable"
+this variable can be directly accessed in the component class in angular file and the using some methods its value can be changed easily
+
+also for dynamic binding we can use [(ngModel)]="something" , value of this something will change whenever its element value gets changed. so dynamically 2-way binding.
+ng-content is  adirective used to show content between the selector used as a html tag.
+for example in the main index.html i wrote <app-root>some thing or some html </app-root>
+where app-root is the selector for my root module , then the html or text inside app-root tag wont be displayed anywhere directly since it would be replaced with the template of app-root
+to display what ever is displayed inside the tags in the the template we need to used tag called <ng-content></ng-content> at which ever position we need that content.
+
+we can do property binding by using square brackets like, firstly i know i stated that above but still:-
+<input [value]="variableValue" />
+now in the component class variable can be used named variableValue and when user inputs it the viceversa it could be fetched too.
+
+To use some data declared in base or root app or module or component and use it or access it in child or derived component, we need to use @input thing, how:-
+say for example we have created an var named name = "shreyan Mehta" in app.component.ts 's class, and we want that in our component that we made say LoginMenu.
+so in the template of root i.e. app.component.html where we have declared the selector as tag of the LoginMenu, there we will pass it an attribute of that tag say [name-placeholder]="name"
+now in the LoginMenu'c component we need to Import Input ontop and in the class we need to use @Input() name-placeholder;
+now in its template for example if we want to use then we can use it as {{name-placeholder}}
+similar concept is of @Output , to send some object from derived to base, sytax and how to use is little different , syntax i am not writting it over here.
+
+DI is a very useful thing in angular 2.
+https://www.youtube.com/watch?v=Mz8lb81AAe4
+for more about it above link, also for @Injectable
+
+using angular 2 forms is as simple as 1 2 3:-
+more on it on 
+http://learnangular2.com/forms/
+best easy understandable
+
+and this too
+https://www.barbarianmeetscoding.com/blog/2016/03/29/getting-started-with-angular-2-step-by-step-5-forms-and-validation/
+for different types of forms in angular 2, two types we can do it:-
+https://www.youtube.com/watch?v=xYv9lsrV0s4
+
+for routing or navigarting between modules or components:-
+https://www.youtube.com/watch?v=BHtVJbJpnNU&t=537s
+
+a good convention is to start private variable name with a '_'
+
+ngSwitch is used for switch case o switch
+and for cases we put *ngSwitchCase and set it acordingly
+
+promise and observable both are used for abstraction and observable is cancellable.
+
+arrow functions can be used like a shorthand :-
+  items.forEach((x) => {
+    console.log(x);
+    incrementedItems.push(x+1);
+  });
+
+in place of :-
+items.forEach(function(x) {
+    console.log(x);
+    incrementedItems.push(x+1);
+  });
