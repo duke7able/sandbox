@@ -1,0 +1,65 @@
+we can either use a cdn or local to attach a jquery lib file.
+Using all the id with '#' , class with '. 'And tags directly , using its combo it selects in the fist part and then does ahead the task we tell to do.
+Basic of ajax using jquery:-
+$.ajax({
+  url: "/api/getWeather",
+  data: {
+    zipcode: 97201
+  },
+  success: function( result ) {
+    $( "#weather-temp" ).html( "<strong>" + result + "</strong> degrees" );
+  }
+});
+
+jquery filter can be used to pass things like ':even' etc, just like we use css selectors.
+Also we can pass function in that filter method and then do the action to the selected ones.Ex:-
+$( "li" )
+  .filter(function( index ) {
+    return $( "strong", this ).length === 1;
+  })
+    .css( "background-color", "red" );
+not method is the opposite of filter method.
+Inverse of it is the not() method.
+Event handling using jquery is done using method named on(), well it is not the only method to do so, but one of the best to do it.
+$( "div" ).on( "click", function( event ) {
+    console.log( "event object:" );
+    console.dir( event );
+});
+for passing multple handling for the same element:-
+$( "div" ).on({
+    mouseenter: function() {
+        console.log( "hovered over a div" );
+    },
+    mouseleave: function() {
+        console.log( "mouse left a div" );
+    },
+    click: function() {
+        console.log( "clicked on a div" );
+    }
+});
+one() method can be similarly in syntax form can be applied but this set of events are handled just once.
+Off() method can be used to disable event handling for that particular event and that particular element.
+We can do chaining in jquery which means we can attach multiple event handlers one after another .
+Queing is about putting events in a queue.
+Animation using jquery is very simple:-
+(selector).animate({styles},speed,easing,callback) 
+The required params parameter defines the CSS properties to be animated.
+The optional speed parameter specifies the duration of the effect. It can take the following values: "slow", "fast", or milliseconds.
+The optional easing parameter specifies the speed of the element in different points of the animation. Default value is "swing". Possible values: "swing" - moves slower at the beginning/end, but faster in the middle , "linear" - moves in a constant speed.
+The optional callback parameter is a function to be executed after the animation completes.
+all property names must be camel-cased when used with the animate() method: You will need to write paddingLeft instead of padding-left, marginRight instead of margin-right, and so on.  
+It is also possible to define relative values (the value is then relative to the element's current value). This is done by putting += or -= in front of the value: 
+height: '+=150px', 
+You can even specify a property's animation value as "show", "hide", or "toggle": 
+height: 'toggle' 
+By default, all HTML elements have a static position, and cannot be moved. To manipulate the position, remember to first set the CSS position property of the element to relative, fixed, or absolute.
+DOM manipulation : All of the methods in this section manipulate the DOM in some manner. 
+Using method like:.attr(), .html(), and .val()—also act as "getters," retrieving information from DOM elements for later use. 
+DOM traversing is also very easy using jquery, by methods like .end() , .siblings() , etc.
+jquery UI is super easy to create root day to day used modules very very easily.
+Jquery plugins are just like pre built templates just like in bootstrap or in any other html css framework or as in Wordpress or a CMS like it, zoomla etc.
+There are many pitfalls for using jquery anyone can fall in it, some of them are worth noting:-
+using selectors repeatedly for the same selected element(s) , whereas we can just do chaining or we can even cache the selected element(s) in a var and then use it, so to make it unneccesarily expensive.
+Also not using shortucts like hide() , toggle() , etc which are provided to make it easier for a programmer to code in jquery then in js, otherwise it is almost same as programming in js if we are doing the complete thing.
+Applying same effects to many selected elements in different calls or statements making it unneccesarily expensive, whereas we can just apply all that together.
+For elements that are created dynamically , delegate method is to be used to bind it.

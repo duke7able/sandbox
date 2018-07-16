@@ -1,0 +1,112 @@
+in the view , we have to declare events like a json:-
+events:{
+	"click .icon":		"open",
+	"click .button.edit":	"openEditDialog",
+	"click .button.delete":	"destroy"
+},
+
+
+in backbone the architecture that is followed is model - view - Collections
+model is where we create classes of how our data would be 
+collections are where we include all the model(s) which ever is needed for a perticular application, mainly there would be only 1 collection in one app.
+views are what we see, it can be the complete screen, it can be an element of the screen, we can embedd view in view...a div can be a view , a button can be a view...any visual element can be a view.
+we mainly embedd view in view since we dont need to changes complete view for rendering some perticular element or section which we know that according to our business logic it is going to be used most.
+
+in view what we basically do is:-
+ourViewElement = Backbone.View.extend({
+	render : function(){
+		this.$el.append("<h1>hello world!</h1>");
+
+		return this;
+	}
+});
+
+//to render it actually we will need to take the element or instance of the our class's object and call its render method.
+//but to do it automatically we can use initialize:-
+//our view can be reedited as :-
+
+ourViewElement = Backbone.View.extend({
+	initialize: function(){
+		this.render();
+	}
+	render : function(){
+		this.$el.append("<h1>hello world!</h1>");
+
+		return this;
+	}
+});
+
+By default backbone creates your view as a div, that is that el attribute you see in console if you console the view object
+to make it anything else or assocate with some class along with making it some particular element, what we can do is,
+set the el attribute to specificaly what we want, ex:-
+
+ourViewElement = Backbone.View.extend({
+	el: 'body',
+	initialize: function(){
+		this.render();
+	},
+	render : function(){
+		this.$el.empty();
+		this.$el.append("<h1>hello world!</h1>");
+
+		return this;
+	}
+});
+
+
+to embedd view inside view:-
+
+ourViewElement = Backbone.View.extend({
+	el: 'body',
+	initialize: function(){
+		this.render();
+	},
+	render : function(){
+		this.$el.empty();
+		this.$el.append("<h1>hello world!</h1>");
+		
+		this.anyNameYouWantToHave = new listThatHasToBeEmbedd();
+		this.$el.append(this.anyNameYouWantToHave.render().el);
+		return this;
+	}
+});
+
+to add template:-
+in the place use:-
+<script type="text/template" id="some">
+	<div><%=value  %><div>
+</script>
+
+in the view thing, 
+ourViewElement = Backbone.View.extend({
+	tagName: 'div',
+	initialize: function(){
+		this.template = ._template($('#item-container').html());
+	},
+	render: function(){
+		this.$el.append(this.template({value : "sdgseg"}));
+		return this;
+	}
+});
+
+routers are similar as in angular 2
+we have to add this as:-
+AppRouter = Backbone.Router.extend({
+	routes:{
+		"": "home",
+		"add":"add",
+		"close":"home",
+	},
+	home:function(){
+		console.log('home');
+		new HomeView();
+	},
+
+	add: function(){
+		console.log('add');
+		new AddView();
+	},
+});
+
+
+

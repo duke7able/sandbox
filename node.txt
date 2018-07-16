@@ -1,0 +1,5 @@
+node runs on v8 engine which is the js for chrome by chrome. so the guy put it in a c++ layer and now it can run outside browser called node.
+its asnc by default
+instead of having object like document and window , that we have in browser js, in node we have object named global, which is similar and works similar.
+in node we have a concept of modules, so any member in a node file say abc.js, is private by default and if imported file then its defination would be overwritted so only the new defination will exist, to overcome node has a concept called module. So it has a module object which has many attributes. One of the attribute is module.export, which is by default == {}. so say i want to make one var of my file public or usuable in outside world then what i could do is module.export.nameIWantToAccessOutside = myCurrentFileObject
+Or i could also pass an array of objectsfor multiple objects when needed to be available outside the file. after that using require("path/of/file.js"); assigning to a var (or more preferaby const) and then just as using packages in python we can use this.

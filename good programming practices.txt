@@ -1,0 +1,23 @@
+Web:-
+
+Use css sprites where ever possible for small icons, i.e. to reduce network calls.
+
+combine or bundle all js and/or css files before deploying production code. Or simply use a webpack which would handle this for you.
+
+for every image that needs to be shown using image tag , store atleast around 5-7 (minimum) number of copies of different sizes (and i.e. dimensions), so according to the view-port or according to device or device resolution, select which one to use.
+
+Also if our site is going to be quite resource intensive then for images say, what we can do is put the source (src) in data-src attribute say for instance and at document.load or window.load just run a loop is js that will have something like:-
+var imgs = document.getelementbytag('img');
+imgs.forEach(function(ele){ele.src = ele.data-src;});
+
+If the site is getting bigger in size, its better we put loading or buffering animation in start before it loads , for which we could simply do ismake that animation and rest tag is display none, on document.load or window.load we could remove the class which had display:none to the main content and then put that class to the loader , and after that using DOM manipulation removing that element too(only if repainting and stuff is not much expensive).
+
+If you think there is too much db querying then using caching of db queries should be done, this can boost up too 200x performance. example redis ,etc.
+
+if the work done with js could be done by css then do it, no matter how much big css is , its better than js. since not all browsers support js an also if something is wrong in js then the code breaks out with error if exception is not handled, in css it just skips it.
+
+if work of css could be done simply by html , then do it, since css is implemented differently by every browser.
+
+use html native tags as much as possible, due to accessibilty , for both differently abled people and for tab - tab movement.
+
+following a proper branch structure in git, nothing to be pushed in master, directly, etc
