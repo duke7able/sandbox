@@ -21,3 +21,6 @@ if work of css could be done simply by html , then do it, since css is implement
 use html native tags as much as possible, due to accessibilty , for both differently abled people and for tab - tab movement.
 
 following a proper branch structure in git, nothing to be pushed in master, directly, etc
+
+use git blame to check whose commit has added that line. Also if using atom use plugin/ package git blame simply
+
