@@ -1,0 +1,21 @@
+https://medium.com/@mycoralhealth/code-your-own-blockchain-in-less-than-200-lines-of-go-e296282bcffc
+
+https://medium.com/@mycoralhealth/code-your-own-blockchain-mining-algorithm-in-go-82c6a71aba1f
+
+Bitcoin uses Double SHA-256, which is simply applying SHA-256 again to the SHA-256 hash of “Hello world”. For our examples throughout this tutorial we’ll just use SHA-256.
+
+Bitcoin achieves this by making the participants hash many combinations of letters and numbers until the resulting hash contains a specific number of leading “0”s.
+
+ex: to approve a transaction a resultant hash should be say containing 8 0's in the start, so from 256 positions  8 bits are fixed, rest are all having 2 posibilities so if we count the probability of getting such a hash is (2 ^(256-8))/(2^(256^256)) = (2^248)/(2^256) = 2^(-8) = 1/256 = 0.00390625 . OR if we see a sha256 hash we can see its length is 64 if encoded in hex , i.e. the characterset over there is [0-9][a-f][A-F] , which equals to 10 + 6 + 6 = 22 . so in that if first 8 positions are 0 then the equation is (22^(64-8))/(22^64) = 22 ^ (-8) = 1/54875873536 = 1.8222... e-11 . So that probabbility is quite low, quite evidently.
+
+
+----
+http://remix.ethereum.org/#optimize=true&version=soljson-v0.4.25+commit.59dbf8f1.js , remix to play and do stuff in  a around etheriuem using the token erc20.
+
+metamask extension is a must
+
+to get free test tokens : https://www.rinkeby.io/#faucet
+
+https://rinkeby.etherscan.io
+
+so basically followed a tutorial to get started with it. I am not yet sure if we can take this approach for production environment.
