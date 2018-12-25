@@ -1,0 +1,18 @@
+basically it is based on component modelling in short for front hand.
+looks something like this:-
+class Square extends React.Component {
+  render() {
+    return (
+      <h1>
+	Its a Square
+	</h1>
+    );
+  }
+}
+there are two main methods of a React.Component :-
+render() which returns a react type object. the syntax we saw above is strange. It is neither string or HTML. Its called JSX.
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+where element is our react element and here root is the id of element inside which we wwant to append our component.
