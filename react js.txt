@@ -34,3 +34,42 @@ function sum(a, b) {
 Such functions are called “pure” because they do not attempt to change their inputs, and always return the same result for the same inputs.
 
 All React components must act like pure functions with respect to their props.
+State is similar to props, but it is private and fully controlled by the component.
+
+Class components should always call the base constructor with props
+
+Dont do this :-
+Doing this wont tell react component to re run the render method and therefore render the component
+this.state.comment = 'Hello';
+
+Always use 
+// Correct
+this.setState({comment: 'Hello'});
+You should only directly set the properties of state veriable in constructor only and not elsewhere
+
+
+Also State updates may be async:-
+// Wrong
+this.setState({
+  counter: this.state.counter + this.props.increment,
+});
+
+// Correct
+this.setState((state, props) => ({
+  counter: state.counter + props.increment
+}));
+
+omponentDidMount() {
+    fetchPosts().then(response => {
+      this.setState({
+        posts: response.posts
+      });
+    });
+
+    fetchComments().then(response => {
+      this.setState({
+        comments: response.comments
+      });
+    });
+  }
+The merging is shallow, so this.setState({comments}) leaves this.state.posts intact, but completely replaces this.state.comments.
