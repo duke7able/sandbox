@@ -73,3 +73,24 @@ omponentDidMount() {
     });
   }
 The merging is shallow, so this.setState({comments}) leaves this.state.posts intact, but completely replaces this.state.comments.
+
+The two default methods that would be called on A. completion of DOM rendering that is componentDidMount()and after that DOM element is removed then B. componentWillUnmount
+
+Event listeners in react:-
+<button onClick={activateLasers}>
+  Activate Lasers
+</button>
+
+reather than 
+<button onclick="activateLasers()">
+  Activate Lasers
+</button>
+
+Another difference is that you cannot return false to prevent default behavior in React. You must call preventDefault explicitly. For example, with plain HTML, to prevent the default link behavior of opening a new page, you can write:
+
+<a href="#" onclick="console.log('The link was clicked.'); return false">
+  Click me
+</a>
+
+
+You have to be careful about the meaning of this in JSX callbacks. In JavaScript, class methods are not bound by default. If you forget to bind this.handleClick and pass it to onClick, this will be undefined when the function is actually called.
