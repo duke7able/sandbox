@@ -94,3 +94,50 @@ Another difference is that you cannot return false to prevent default behavior i
 
 
 You have to be careful about the meaning of this in JSX callbacks. In JavaScript, class methods are not bound by default. If you forget to bind this.handleClick and pass it to onClick, this will be undefined when the function is actually called.
+
+babel is the one which converts our jsx into browser understandable js
+
+Tips: Use jsc extension for components and not just js, though js will work too but by having extension jsx would result in better compilation times
+
+JSX componet or thing must have 1 parent component
+
+keeping the code inside this this main component, like this:-
+  render() {
+    return (
+      <React.Fragment>
+        <h1>test</h1>
+      </React.Fragment>
+    );
+  }
+
+when you wrap your jsx into React.Fragment tags then on run time that parent tag gets disappeared, boom! just like that.
+
+adding class in jsx elements are by using attribute of element that is className.
+
+adding inline style here is also so simple , attribute is style itself and its can be passed a json object, example :-
+styles= {
+	fontSize: 20,
+	color: blue
+};
+
+and passing in like:-
+render() {
+	return (
+	<h1 style={this.styles}>
+	test
+	</h1>
+);
+}
+
+
+here jsx or react will automatically convert fontSize: 20 to 20px
+
+-----
+lists and keys. method : map, Ex:
+
+const numbers = [1, 2, 3, 4, 5];
+const listItems = numbers.map((number) =>
+  <li>{number}</li>
+);
+
+listItems now contain list elements of five numbers ,1 ,2 ...5

@@ -1,0 +1,1 @@
+firstly we dont need to play that dumb thing in js n jquery like adding event listeners for is certain thing has changed and that say custom event is triggered. built in component based event listeners and handlers.
