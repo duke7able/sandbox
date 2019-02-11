@@ -1,0 +1,143 @@
+basically it is based on component modelling in short for front hand.
+looks something like this:-
+class Square extends React.Component {
+  render() {
+    return (
+      <h1>
+	Its a Square
+	</h1>
+    );
+  }
+}
+there are two main methods of a React.Component :-
+render() which returns a react type object. the syntax we saw above is strange. It is neither string or HTML. Its called JSX.
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+where element is our react element and here root is the id of element inside which we wwant to append our component.
+We call ReactDOM.render() with the <Welcome name="Sara" /> element.
+React calls the Welcome component with {name: 'Sara'} as the props.
+Our Welcome component returns a <h1>Hello, Sara</h1> element as the result.
+React DOM efficiently updates the DOM to match <h1>Hello, Sara</h1>.
+
+Note: Always start component names with a capital letter.
+
+React treats components starting with lowercase letters as DOM tags. For example, <div /> represents an HTML div tag, but <Welcome /> represents a component and requires Welcome to be in scope
+
+We recommend naming props from the component’s own point of view rather than the context in which it is being used.
+
+function sum(a, b) {
+  return a + b;
+}
+
+Such functions are called “pure” because they do not attempt to change their inputs, and always return the same result for the same inputs.
+
+All React components must act like pure functions with respect to their props.
+State is similar to props, but it is private and fully controlled by the component.
+
+Class components should always call the base constructor with props
+
+Dont do this :-
+Doing this wont tell react component to re run the render method and therefore render the component
+this.state.comment = 'Hello';
+
+Always use 
+// Correct
+this.setState({comment: 'Hello'});
+You should only directly set the properties of state veriable in constructor only and not elsewhere
+
+
+Also State updates may be async:-
+// Wrong
+this.setState({
+  counter: this.state.counter + this.props.increment,
+});
+
+// Correct
+this.setState((state, props) => ({
+  counter: state.counter + props.increment
+}));
+
+omponentDidMount() {
+    fetchPosts().then(response => {
+      this.setState({
+        posts: response.posts
+      });
+    });
+
+    fetchComments().then(response => {
+      this.setState({
+        comments: response.comments
+      });
+    });
+  }
+The merging is shallow, so this.setState({comments}) leaves this.state.posts intact, but completely replaces this.state.comments.
+
+The two default methods that would be called on A. completion of DOM rendering that is componentDidMount()and after that DOM element is removed then B. componentWillUnmount
+
+Event listeners in react:-
+<button onClick={activateLasers}>
+  Activate Lasers
+</button>
+
+reather than 
+<button onclick="activateLasers()">
+  Activate Lasers
+</button>
+
+Another difference is that you cannot return false to prevent default behavior in React. You must call preventDefault explicitly. For example, with plain HTML, to prevent the default link behavior of opening a new page, you can write:
+
+<a href="#" onclick="console.log('The link was clicked.'); return false">
+  Click me
+</a>
+
+
+You have to be careful about the meaning of this in JSX callbacks. In JavaScript, class methods are not bound by default. If you forget to bind this.handleClick and pass it to onClick, this will be undefined when the function is actually called.
+
+babel is the one which converts our jsx into browser understandable js
+
+Tips: Use jsc extension for components and not just js, though js will work too but by having extension jsx would result in better compilation times
+
+JSX componet or thing must have 1 parent component
+
+keeping the code inside this this main component, like this:-
+  render() {
+    return (
+      <React.Fragment>
+        <h1>test</h1>
+      </React.Fragment>
+    );
+  }
+
+when you wrap your jsx into React.Fragment tags then on run time that parent tag gets disappeared, boom! just like that.
+
+adding class in jsx elements are by using attribute of element that is className.
+
+adding inline style here is also so simple , attribute is style itself and its can be passed a json object, example :-
+styles= {
+	fontSize: 20,
+	color: blue
+};
+
+and passing in like:-
+render() {
+	return (
+	<h1 style={this.styles}>
+	test
+	</h1>
+);
+}
+
+
+here jsx or react will automatically convert fontSize: 20 to 20px
+
+-----
+lists and keys. method : map, Ex:
+
+const numbers = [1, 2, 3, 4, 5];
+const listItems = numbers.map((number) =>
+  <li>{number}</li>
+);
+
+listItems now contain list elements of five numbers ,1 ,2 ...5
