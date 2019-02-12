@@ -141,3 +141,141 @@ const listItems = numbers.map((number) =>
 );
 
 listItems now contain list elements of five numbers ,1 ,2 ...5
+
+whenever we are using map here, we would be requiring to give them unique keys such as id.
+
+why this needs to be bind, since in js this referes to which object is calling it. and if the method is called directly then it returns the window object. but if we are in strict mode then it returns undefined.
+
+its okay if the component is little big ,as if on change of some small part of it, react library wont replace the complete part of it, it will compare the old and new tree and then will only replace the changed part. so performance wise not a big hit would be there as repainting would be done of only changed element and not the complete dom structure.
+
+we can pass inline function on any element's event listener , ex:-
+<button onClick={ () => this.getSomethingUseful(product) }  >
+
+whatever attribute we pass to our component that attribute will be used to reference that in the component . ex:
+<App testAtrr={5} />
+
+in app we can get that property by this.props['testAtrr']
+
+we can pass children or any other html inside the component as:-
+<App >
+<h1>
+qwerty
+</h1>
+</App >
+
+
+we can access that in App by this.props.children . It is the reserved thing for this . probably we cannot use children as a attribute when passing to a component. We can directly render that children also in the App by {this.props.children} in render method. This can be useful when our component is a dialog or something like that.
+
+biggest difference between props and state. state cannot be assigned or accessed from outside, example how we are assigning the props to the componets via attribute, we cannot assign it similarly to state (as in directly). Another big difference is props is immutable i.e. we cannot alter the props , whereas state we can and we do most of the time.
+
+We can use a arrow function so that we dont need to assign the method with its binded with this form in constructor.
+methodDef = () => {}   this it the way we are talking about
+
+rather than doing this in constructor after super call
+this.methodDef = this.methodDef.bind(this);
+
+The component that owns a piece of the state, should be the one modifying it.
+
+to trigger parent component's method via child component, :-
+creating a method which is called say handleDelete() in Parent and where it is calling/consuming child:-
+<Child onDeleteOrAnyIdentifier={handleDelete} >
+
+in child we can call that method by this.props.onDeleteOrAnyIdentifier() , which is basically a callback method to that method.
+
+if the state object name is same as local object which is the rhs or new assigning object than we can do directly this:-
+this.setState({ counters });
+// without needed of doing this:-
+this.setState({ counters: counters });
+
+These both are same
+
+If we are having a component which has just a render method in the class, and not state and no event handlers, evertyhing maybe controlled by props then we can / should create a const adn the component is known as stateless functional component since our component is stateless. and put everything inthat and call it. no need of class, just export that const. and the props is passed in the argument of that const functuon. ex :-
+const NavBar = (props) => {
+	return (
+		<h1>{props.title}</h1>
+	);
+}
+
+
+Destructuring arguments: basically if we dont want to do everytime this.that.somethuing we can do destructuring of arguments
+we can do like:-
+
+const NavBar = ({title}) => {
+	return (
+		<h1>{title}</h1>
+	);
+}
+
+And in normal components we can do like:-
+inside render method say:-
+render() {
+	const { title, subTitle } = this.props;
+
+	return (
+		<h1>{title}</h1>
+		<h5>{subTitle}</h5>
+	);
+}
+
+lifecycle hooks are the methods that react call in order, kinda react lifecycle, most frequently used ones are:-
+IN THE RESPECTIVE ORDER
+
+MOUNT:-
+ctor
+render
+componentDidMount
+
+UPDATE:-
+render
+componentDidUpdate
+
+UNMOUNT:-
+componentWillUnmount
+
+
+as name suggestes
+
+context :-
+
+
+
+----
+redux
+
+Actions are payloads of information that send data from your application to your store. They are the only source of information for the store. You send them to the store using store.dispatch().
+
+ex: 
+{
+  type: TOGGLE_TODO,
+  index: 5
+}
+
+
+Action creators are exactly that—functions that create actions. It's easy to conflate the terms “action” and “action creator”, so do your best to use the proper term.
+
+
+ex: -
+function addTodo(text) {
+  return {
+    type: ADD_TODO,
+    text
+  }
+}
+
+What I found is that you should consider using Redux when:
+
+multiple React components needs to access the same state but do not have any parent/child relationship
+you start to feel awkward passing down the state to multiple components with props
+
+The most important concept here is that the state in redux comes from reducers. Let’s make it clear: reducers produce the state of your application.
+
+A reducer is just a JavaScript function. A reducer takes two parameters: the current state and an action 
+
+Before moving forward let’s recap the main Redux concepts:
+
+the Redux store is like a brain: it’s in charge for orchestrating all the moving parts in Redux
+the state of the application lives as a single, immutable object within the store
+as soon as the store receives an action it triggers a reducer
+the reducer returns the next state
+
+Redux protip: the reducer will grow as your app will become bigger. You can split a big reducer into separate functions and combine them with combineReducers
