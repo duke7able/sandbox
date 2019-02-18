@@ -24,3 +24,4 @@ following a proper branch structure in git, nothing to be pushed in master, dire
 
 use git blame to check whose commit has added that line. Also if using atom use plugin/ package git blame simply
 
+another reason for not using same id twice is that, every HTML element assigned an id is a global variable in JavaScript: https://jsbin.com/fosenokoju/1/edit?html,js,console,output
