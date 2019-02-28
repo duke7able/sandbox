@@ -278,4 +278,13 @@ the state of the application lives as a single, immutable object within the stor
 as soon as the store receives an action it triggers a reducer
 the reducer returns the next state
 
+There are two key points for avoiding mutations in Redux:
+
+Using concat(), slice(), and …spread for arrays
+Using Object.assign() and …spread for objects
+
 Redux protip: the reducer will grow as your app will become bigger. You can split a big reducer into separate functions and combine them with combineReducers
+
+getState for accessing the current state of the application
+dispatch for dispatching an action
+subscribe for listening on state changes
