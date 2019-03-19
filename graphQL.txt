@@ -7,3 +7,7 @@ Like :-
 Const { GraphQLObjectType } = require('graphql')
 
 
+That Objects we have to create a new object of that and we need to pass in a json kind o structure inside it that contains , an attribute called name.
+Then second attribute it contains is fields.
+The name attribute is the one we use as our first identifier to identify our grapnel query.
+Fields contains fields that is expecting, along with its types.s
