@@ -18,3 +18,10 @@ Lastly we will create an object which would contain resolve method in fields and
 The resolve method would contain the fetch or XHR call thing, which will eventually bring data.
 
 This Object would be passed on to the query attribute of the graphQLSchema Object, which we are exporting and which is the the schema object which we pass as schema
+
+
+Most of the time we fetch everything with a single request .
+
+The main good thing due to this is no more over fetching , i.e. downloading unnecessary data and no more under fetching, doesn't return enough of the right information, need to send multiple requests (n+1 - requests problem )
+
+Exclamation mark after the type denotes that , that field is required.
