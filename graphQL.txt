@@ -1,0 +1,9 @@
+GraphQL basics
+Basically we need a schema according to that it makes and remembers structure
+It is used in places where we have large data and normal RESTFull API's can create a lot of calls to the server, for even simple task.
+This reduces the number of calls and optimally fetches or in general does CRUD or anything on that.
+Then we have a GraphQLObjectType which is the schema object , we need to get that from graphql , which we need to install.
+Like :-
+Const { GraphQLObjectType } = require('graphql')
+
+
