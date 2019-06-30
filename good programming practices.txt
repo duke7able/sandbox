@@ -25,3 +25,14 @@ following a proper branch structure in git, nothing to be pushed in master, dire
 use git blame to check whose commit has added that line. Also if using atom use plugin/ package git blame simply
 
 another reason for not using same id twice is that, every HTML element assigned an id is a global variable in JavaScript: https://jsbin.com/fosenokoju/1/edit?html,js,console,output
+
+Use documentation tools to document code for new developers to easily join in. We can easily use things like jsdocs. While adding comment it would be easily readable in code too and also in docs it would be good.
+
+Use a global naming conventions that is strictly followed throughout the project , like for class , use '-' separated lowercase words , for id use site descriptive id. Etc.
+
+Use linting for code listing and proper code quality check
+
+write unit test cases where ever possible so that if you change something somewhere , then at least main modules , if they break you will get an compile time error, which is always better than getting runtime exceptions or unexpected run time errors, which are very difficult to debug too.
+
+Make your code stricter if possible , just like using use strict or typescript , even in normal js too. This will reduce number of bugs and would make run time errors or logical errors less and bring them up at compile time so , unexpected behaviour don't happen or server when deployed.
+

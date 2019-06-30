@@ -1,0 +1,35 @@
+GraphQL basics
+Basically we need a schema according to that it makes and remembers structure
+It is used in places where we have large data and normal RESTFull API's can create a lot of calls to the server, for even simple task.
+This reduces the number of calls and optimally fetches or in general does CRUD or anything on that.
+Then we have a GraphQLObjectType which is the graphQl type , we need to get that from graphql , which we need to install.
+Like :-
+Const { GraphQLObjectType } = require('graphql')
+
+
+That Objects we have to create a new object of that and we need to pass in a json kind o structure inside it that contains , an attribute called name.
+Then second attribute it contains is fields.
+The name attribute is the one we use to identify it when say we want to pass in a a type , say in GraphQLList() 
+Fields contains fields that is expecting, along with its types.
+
+We can create as many of types we want
+
+Lastly we will create an object which would contain resolve method in fields and also other fields , which would contain their type. 
+The resolve method would contain the fetch or XHR call thing, which will eventually bring data.
+
+This Object would be passed on to the query attribute of the graphQLSchema Object, which we are exporting and which is the the schema object which we pass as schema
+
+
+Most of the time we fetch everything with a single request .
+
+The main good thing due to this is no more over fetching , i.e. downloading unnecessary data and no more under fetching, doesn't return enough of the right information, need to send multiple requests (n+1 - requests problem )
+
+Exclamation mark after the type denotes that , that field is required.
+
+A mutation is basically like a mutator method , via which we can do CRUD operation.
+Its is done like this:-
+Mutation {
+	createPerson(name: "Alice", age: 36) {
+		id
+	}
+}
