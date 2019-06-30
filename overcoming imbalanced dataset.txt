@@ -1,0 +1,5 @@
+try to reduce false positives and true  negtives
+check the ROAU score, the bigger the better 
+do samplings , undersampling or oversampling
+for normal imbalanced datasets randomforest works very well, but if the imbalance is very high, like the dataset
+has less than 1% proportion of our label like cancer dataset. cost sensitive algo should be used
