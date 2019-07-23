@@ -1,0 +1,7 @@
+go to console
+add email in there to verfiy it
+open mailbox verify it
+then to send mail to people who are not verifyed we need to extend our plan , i.e. request to extend plan to remove sandbox.
+then if we have to send using template ,then use createTemplate method to do so , and updateTemplate to update it. use it with aws-sdk
+install aws-sdk with npm or something (like yarn)
+use sendmail method to send simple mail or use sendTemplate something similar mail method for sending templated mail.
