@@ -1,0 +1,14 @@
+There are 2 main things about writing test cases, i.e. unit test cases
+One is Testing environment , one of the most popular on is mocha in javascript
+another thing is Assertion Library , famous among it is chai which gets set very good with mocha
+
+a very simple example below: -
+run this from command mocha
+
+const assert = require('chai').assert
+
+describe('user test cases', () => {
+  it('signing API', () => {
+    assert.equal('hello', 'hello')
+  })
+})
