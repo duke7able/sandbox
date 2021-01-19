@@ -1,0 +1,16 @@
+for webpack, summary  :
+there are two modules : 
+webpack -- used majorly for production build,
+webpack-dev-server -- used for our development to know how it will look when its in prod.
+
+to configure it in detail, we could use a config file, and by default if we create a file called webpack.config.js on same level as package.json or root , webpack will automatically take it.
+Else we would need to manually add in config file name and location
+
+inside the config file, we would module.export a json which would be used for config. It has main 4 reserved properties which we can add in :
+entry -- defined the entry point for webpack where it should start working, we could have multiple entry points too,
+output -- its a json which contains properties like path, filename , publicPath (for webpack-dev-server) , this parameter defines the output or end point,
+module -- this tag is for adding loaders, which are essentially what we can say in simpler terms engines or something like that which we want to add according to each file that matches the test.
+Module has a keyword called rules , which contain array or json, for each rule.
+Each json would contain keyword test, which would be a regex , which matches which files to apply this rule to, another parameter of this rule json is use (we could use loader, but since we want multiple loaders for a single rule we would need to use , "use").
+Use is an array of strings, and the order of adding the loader which are specified here in use are from bottom to top, i.e. the one added in last of array would be loaded first.
+plugins -- this is similar to loaders, that we added using module keyword, but this wont add to each and everyfile one by one, or to the files that get matched with test regex for the rule, plugin effects on complete project
